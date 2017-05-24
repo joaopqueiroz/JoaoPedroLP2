@@ -9,43 +9,54 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            string modelo, T, P;
-            double km, potencia;
-            int i, qtd;
+            int i, qtd, potencia;
+            string nome;
+            double km;
 
             Console.WriteLine("Informe a quantidade de carros");
-            qtd = int.Parse(Console.ReadLine());
+            qtd = Convert.ToInt32(Console.ReadLine());
 
             for (i = 0; i < qtd; i++)
             {
-                Console.WriteLine("Informe o modelo do carro");
-                modelo = Console.ReadLine();
+                Console.WriteLine("Informe o nome do carro");
+                nome = Console.ReadLine();
 
                 Console.WriteLine("Informe a quilometragem do carro");
-                km = Convert.ToDouble(Console.ReadLine());
+                km = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("Informe a potencia do carro");
-                potencia = Convert.ToDouble(Console.ReadLine());
+                potencia = int.Parse(Console.ReadLine());
 
-                if (km < 5000)
-                    T = "novo";
+                Console.WriteLine(Classificar(nome, km, potencia));
 
-                else if (km >= 5000 && km <= 30000)
-                    T = "seminovo";
-
-                else
-                    T = "velho";
-
-                if (potencia > 200)
-                    P = "potente";
-
-                else if (potencia > 120 && potencia <= 200)
-                    P = "forte";
-
-                else
-                    P = "popular";
-                Console.WriteLine("O {0} - {1} - {2}", modelo, T, P);
             }
+        } //static void main
+
+        public static string Classificar(string modelo, double km, int potencia)
+        {
+            string T, P;
+
+            if (km <= 5000)
+                T = "novo";
+
+            else if (km <= 30000)
+                T = "seminovo";
+
+            else
+                T = "velho";
+
+            if (potencia < 120)
+                P = "popular";
+
+            else if (potencia <= 200)
+                P = "forte";
+
+            else
+                P = "potente";
+
+            return String.Format("{0} - {1} - {2}", modelo, T, P);
+
+
         }
     }
 }
