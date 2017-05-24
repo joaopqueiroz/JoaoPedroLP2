@@ -42,25 +42,25 @@ namespace ConsoleApplication1
         {
             string T, P;
 
-            if (km <= 5000)
+            if (automovel.km <= 5000)
                 T = "novo";
 
-            else if (km <= 30000)
+            else if (automovel.km <= 30000)
                 T = "seminovo";
 
             else
                 T = "velho";
 
-            if (potencia < 120)
+            if (automovel.potencia < 120)
                 P = "popular";
 
-            else if (potencia <= 200)
+            else if (automovel.potencia <= 200)
                 P = "forte";
 
             else
                 P = "potente";
 
-            return String.Format("{0} - {1} - {2}", modelo, T, P);
+            return String.Format("{0} - {1} - {2}", automovel.modelo, T, P);
 
         }
         
