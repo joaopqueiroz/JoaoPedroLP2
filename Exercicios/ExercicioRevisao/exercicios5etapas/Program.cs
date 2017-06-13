@@ -2,66 +2,79 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
     class Program
     {
-        struct carro
+        public struct Carro
         {
-            public int potencia;
-            public int qtd;
-            public string nome;
+            public string modelo;
+            public double cv;
             public double km;
+            public string cor;
+            public string fabricante;
+            public int anoFab;
         }
+
         static void Main(string[] args)
         {
-            carro automovel;
-            int i;
+            int n = int.Parse(Console.ReadLine());
+            Carro[] Car = new Carro[n];
 
-            Console.WriteLine("Informe a quantidade de carros");
-            automovel.qtd = Convert.ToInt32(Console.ReadLine());
-
-            for (i = 0; i < automovel.qtd; i++)
+            for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine("Informe o nome do carro");
-                automovel.nome = Console.ReadLine();
-
-                Console.WriteLine("Informe a quilometragem do carro");
-                automovel.km = double.Parse(Console.ReadLine());
-
-                Console.WriteLine("Informe a potencia do carro");
-                automovel.potencia = int.Parse(Console.ReadLine());
-
-                Console.WriteLine(Classificar(automovel.nome, automovel.km, automovel.potencia));
-
+                Car[i].modelo = Console.ReadLine();
+                Car[i].km = Double.Parse(Console.ReadLine());
+                Car[i].cv = Double.Parse(Console.ReadLine());
+                Car[i].cor = Console.ReadLine();
+                Car[i].fabricante = Console.ReadLine();
+                Car[i].anoFab = Int32.Parse(Console.ReadLine());
             }
-        } //static void main
 
-        public static string Classificar(string modelo, double km, int potencia)
+            for (int i = 0; i < n; i++)
+                Console.WriteLine(Classificar(Car[i]));
+        }
+
+        public static string Classificar(Carro c)
         {
-            string T, P;
+            string pot, uso;
 
-            if (automovel.km <= 5000)
-                T = "novo";
-
-            else if (automovel.km <= 30000)
-                T = "seminovo";
-
+            if (c.km <= 5000)
+                uso = "Novo";
+            else if (c.km <= 30000)
+                uso = "Seminovo";
             else
-                T = "velho";
+                uso = "Velho";
 
-            if (automovel.potencia < 120)
-                P = "popular";
-
-            else if (automovel.potencia <= 200)
-                P = "forte";
-
+            if (c.cv < 120)
+                pot = "Popular";
+            else if (c.cv < 200)
+                pot = "Forte";
             else
-                P = "potente";
+                pot = "Potente";
 
-            return String.Format("{0} - {1} - {2}", automovel.modelo, T, P);
+            return String.Format("{0} - {1} - {2}", c.modelo, uso, pot);
+        }
 
+        public static void AterarModelo(Carro c)
+        {
+            c.km = Double.Parse(Console.ReadLine());
+        }
+
+        public static void AterarCor(Carro c)
+        {
+            c.cor = Console.ReadLine();
+        }
+
+        public static int CalcularTaxaDeUso(Carro c)
+        {
+            int anoHJ, uso;
+
+            anoHJ = Int32.Parse(Console.ReadLine());
+            uso = anoHJ - c.anoFab;
+            return uso;
         }
 
     }
