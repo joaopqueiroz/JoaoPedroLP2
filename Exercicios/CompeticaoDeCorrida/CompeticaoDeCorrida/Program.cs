@@ -12,6 +12,8 @@ namespace CompeticaoDeCorrida
         {
             Console.WriteLine("Informe o número de competidores");
             int n = Int32.Parse(Console.ReadLine());
+            string vencedor;
+            double TempoVencendor;
 
             Competidor[] comp = new Competidor[n];
             double[] tempoOf = new double[n];
@@ -37,6 +39,22 @@ namespace CompeticaoDeCorrida
 
                 i++;
             }
+            
+            TempoVencendor = tempoOf[0];
+            vencedor = comp[0].nome;
+            i = 0;
+            while (i < n)
+            {
+                if (tempoOf[i] < TempoVencendor)
+                {
+                    TempoVencendor = tempoOf[i];
+                    vencedor = comp[0].nome;
+                }
+
+                i++;
+            }
+
+            Console.WriteLine("O vencedor é {0} com o tempo de {1}", vencedor, TempoVencendor);
         }
     }
 }
