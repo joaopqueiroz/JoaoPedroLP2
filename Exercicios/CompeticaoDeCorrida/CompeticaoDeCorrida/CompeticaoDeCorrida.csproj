@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D20F0E33-861E-466A-8598-ADCC657E96D1}</ProjectGuid>
+    <ProjectGuid>{C13CEAA7-8604-43A1-92BF-A2980CBD2300}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CompeticaoDeCorrida</RootNamespace>

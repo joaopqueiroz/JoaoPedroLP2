@@ -10,51 +10,56 @@ namespace CompeticaoDeCorrida
     {
         static void Main(string[] args)
         {
+            string nome;
+            double t1, t2, t3;
+            int n, i;
+
             Console.WriteLine("Informe o número de competidores");
-            int n = Int32.Parse(Console.ReadLine());
-            string vencedor;
-            double TempoVencendor;
+            n = int.Parse(Console.ReadLine());
 
-            Competidor[] comp = new Competidor[n];
-            double[] tempoOf = new double[n];
+            Competidor[] competidores = new Competidor[n];
 
-            int i = 0;
-            while (i < n)
+            for (i = 0; i < n; i++)
             {
-                comp[i] = new Competidor();
-                
+                Competidor corredor = new Competidor();
                 Console.WriteLine("Informe o nome");
-                comp[i].nome = Console.ReadLine();
-                
-                Console.WriteLine("Informe o primeiro tempo");
-                comp[i].t1 = Double.Parse(Console.ReadLine());
+                nome = Console.ReadLine();
+                corredor.nome = nome; 
 
-                Console.WriteLine("Informe o segundo tempo");
-                comp[i].t2 = Double.Parse(Console.ReadLine());
-
-                Console.WriteLine("Informe o terceiro tempo");
-                comp[i].t3 = Double.Parse(Console.ReadLine());
-                
-                tempoOf[i] = comp[i].TempoOficial();
-
-                i++;
+                competidores[i] = corredor;
             }
-            
-            TempoVencendor = tempoOf[0];
-            vencedor = comp[0].nome;
-            i = 0;
-            while (i < n)
+            for (i = 0; i < n; i++)
             {
-                if (tempoOf[i] < TempoVencendor)
-                {
-                    TempoVencendor = tempoOf[i];
-                    vencedor = comp[0].nome;
-                }
-
-                i++;
+                Console.WriteLine("Informe o primeiro tempo do competidor {0}", i + 1);
+                t1 = Convert.ToDouble(Console.ReadLine());
+                competidores[i].t1 = t1; 
             }
+            for (i = 0; i < n; i++)
+            {
+                Console.WriteLine("Informe o segundo tempo do competidor {0}", i + 1);
+                t2 = Convert.ToDouble(Console.ReadLine());
+                competidores[i].t2 = t2;
+            }
+            for (i = 0; i < n; i++)
+            {
+                Console.WriteLine("Informe o terceiro tempo do competidor {0}", i + 1);
+                t3 = Convert.ToDouble(Console.ReadLine());
+                competidores[i].t3 = t3;
+            }
+            string vencedor = competidores[0].nome;
+            double TempoVencedor = competidores[0].TempoFinal();
 
-            Console.WriteLine("O vencedor é {0} com o tempo de {1}", vencedor, TempoVencendor);
+            for (i = 0; i < n; i++)
+            {
+                if (competidores[i].TempoFinal() < TempoVencedor)
+                {
+                    TempoVencedor = competidores[i].TempoFinal();
+                    vencedor = competidores[i].nome;
+                }
+                
+             }
+            Console.WriteLine("O vencedor é {0}", vencedor);
+
         }
     }
 }
