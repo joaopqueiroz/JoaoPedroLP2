@@ -15,7 +15,7 @@ namespace _4_CodigoMorse
             'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o',
             'p', 'q', 'r', 's', 't',
-            'u', 'v', 'w', 'x', 'y', 'z'
+            'u', 'v', 'w', 'x', 'y', 'z',' '
         };
         private string[] tab = new string[]
         {
@@ -23,7 +23,7 @@ namespace _4_CodigoMorse
             "..-.", "--.", "....", "..", ".---",
             "-.-", ".-..", "--", "-.", "---", 
             ".--.", "--.-", ".-.", "...", "-", 
-            "..-", "...-", ".--", "-..-", "-.--", "--.."
+            "..-", "...-", ".--", "-..-", "-.--", "--..", "-----"
         };
 
         public string Codificar()
@@ -35,7 +35,7 @@ namespace _4_CodigoMorse
 
             for (int i = 0; i < txt.Length; i++)
             {
-                for (int p = 0; p < 26; p++)
+                for (int p = 0; p < 27; p++)
                 {
                     if (txt[i] == letra[p])
                     {
@@ -62,7 +62,7 @@ namespace _4_CodigoMorse
 
             for (int i = 0; i < codigo.Length; i++)
             {
-                for (int p = 0; p < 26; p++)
+                for (int p = 0; p < 27; p++)
                 {
                     if (codigo[i] == tab[p])
                     {
